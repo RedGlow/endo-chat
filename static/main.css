@@ -1,3 +1,42 @@
+body {
+  /*
+  COLORS:
+  https://colorhunt.co/palette/ffe15df49d1adc3535b01e68
+  */
+  --color-mustard: #ffe15d;
+  --color-marigold: #f49d1a;
+  --color-cg-red: #dc3535;
+  --color-maroon: #b01e68;
+
+  color: #200613;
+}
+
+/* TABBED */
+
+.tabbed__container {
+  margin: 0;
+  padding: 0.2em 0;
+}
+
+.tabbed__tab {
+  border-radius: 5px 5px 0 0;
+  border-width: 1px;
+  border-color: var(--color-maroon);
+  border-style: solid;
+  background-color: var(--color-mustard);
+  color: var(--color-maroon);
+  cursor: pointer;
+  list-style: none;
+  display: inline;
+  padding: 0.2em;
+  box-sizing: content-box;
+}
+
+.tabbed__tab.tabbed__selected {
+  background-color: var(--color-maroon);
+  color: var(--color-mustard);
+}
+
 /* CHAT MESSAGES */
 
 .chat_messages__container {
@@ -5,7 +44,7 @@
   min-height: 100px;
   max-height: 80vh;
   overflow-y: scroll;
-  border: 1px solid lightblue;
+  border: 1px solid var(--color-marigold);
 }
 
 .chat_messages__entry {
@@ -16,9 +55,14 @@
   display: inline-block;
   width: 100px;
   font-size: smaller;
-  color: lightgray;
+  color: var(--color-marigold);
 }
 
 .chat_messages__author {
   font-weight: bold;
+  cursor: pointer;
+}
+
+.chat_messages__author:hover {
+  text-decoration: underline;
 }

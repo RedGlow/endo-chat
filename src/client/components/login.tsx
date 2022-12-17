@@ -1,13 +1,17 @@
 import React, { useCallback } from "react";
 import { memo } from "react";
-import { useLocalStorage } from "./use-local-storage";
+import useStorage, { StorageType } from "./use-storage";
 
 export interface LoginProps {
   onLogin(loginName: string): void;
 }
 
 export const Login = memo(function Login({ onLogin }: LoginProps) {
-  const [loginName, setLoginName] = useLocalStorage("login-name", "pippo");
+  const [loginName, setLoginName] = useStorage(
+    StorageType.Session,
+    "login-name",
+    "pippo"
+  );
 
   const onChange = useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
     setLoginName(ev.target.value);

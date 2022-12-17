@@ -4,8 +4,9 @@ import { Message, MessageCallback, ServerBootstrap } from "../../server-bootstra
 import { Root } from "./root";
 
 export type LoginMethod = (username: string, messageCallback: MessageCallback) => Promise<{
-  getLastMessages: () => Promise<Message[]>;
-  write: (line: string) => Promise<void>;
+  getLastMessages(): Promise<Message[]>;
+  write(line: string): Promise<void>;
+  dmTo(to: string, line: string): Promise<void>
 }>
 
 export function mount(login: LoginMethod) {

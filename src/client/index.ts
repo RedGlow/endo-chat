@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import debug from "debug";
 import { E, Far } from "@endo/captp";
 import {
+  Message,
   MessageCallback,
   ServerBootstrap,
 } from "../server-bootstrap-interface";
@@ -27,12 +28,23 @@ async function go() {
   );
   var bootstrap = E(b);
   const login = async (username: string, messageCallback: MessageCallback) => {
+    const dm = (message: Message) => {
+      useMainChat.setState((state) => ({
+        ...state,
+        dms: [...state.dms, message],
+      }));
+    }
     const i = E(
-      await bootstrap.login(username, Far("messageCallback", messageCallback))
+      await bootstrap.login(
+        username,
+        Far("messageCallback", messageCallback),
+        Far("dmMessageCallback", dm)
+      )
     );
     return {
       getLastMessages: () => i.getLastMessages(),
       write: (line: string) => i.write(line),
+      dmTo: (to: string, line: string): Promise<void> => i.dmTo(to, line)
     };
   };
 
