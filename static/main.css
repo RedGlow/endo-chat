@@ -1,0 +1,24 @@
+/* CHAT MESSAGES */
+
+.chat_messages__container {
+  width: 100%;
+  min-height: 100px;
+  max-height: 80vh;
+  overflow-y: scroll;
+  border: 1px solid lightblue;
+}
+
+.chat_messages__entry {
+  margin: 0;
+}
+
+.chat_messages__timestamp {
+  display: inline-block;
+  width: 100px;
+  font-size: smaller;
+  color: lightgray;
+}
+
+.chat_messages__author {
+  font-weight: bold;
+}

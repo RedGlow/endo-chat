@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "include": ["**/*", "../message-passing-base.ts"],
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "../../dist",
+    "module": "es6",
+    "sourceMap": true
+  }
+}
